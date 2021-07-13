@@ -67,7 +67,7 @@
             color: #4175DA;
         }
 
-       /* The side left navigation menu */
+       /* The side left navigation menu. Credits to W3Schools */
 		.sidenav {
 		height: 100%; /* 100% Full-height */
 		width: 0; /* 0 width - change this with JavaScript */
@@ -178,20 +178,24 @@
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item active text-nowrap" onclick="openNav()">
+                        <li class="nav-item active text-nowrap">
                             <a class="nav-link">
 								<!-- Google icon src: -->
-                                <span class="material-icons white">brush</span>
+                                <span class="material-icons white">format_color_fill</span>
                                 <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active text-nowrap">
                             <a class="nav-link">
-								[ERASER]
+								<!-- Eraser icon src: https://www.iconsdb.com/white-icons/eraser-icon.html-->
+								<img src="https://www.iconsdb.com/icons/preview/white/eraser-xxl.png" style="width:28px;height:24px;">
 								<span class="sr-only">(current)</span></a>
                         </li>
                         
                         <li class="nav-item active text-nowrap" onclick="openNav()">
-                            <a class="nav-link">[COLORS]<span class="sr-only">(current)</span></a>
+                            <a class="nav-link">
+								<!-- Color palette icon src: https://www.flaticon.com/free-icon/palette_993814 by Freepik-->
+								<img src="https://image.flaticon.com/icons/png/512/993/993814.png" style="width:24px;height:24px;">
+								<span class="sr-only">(current)</span></a>
                         </li>
                       </ul>
 
@@ -217,7 +221,7 @@
                 <div class="h1" style="color: white;">Menu</div>    
             </div>
             <div class="row justify-content-center p-3 lighter-blue-bg">
-                <a class="h3" href="#" style="color: white;">Template Selction</a>    
+                <a class="h3" href="#" style="color: white;">Template Selection</a>    
             </div>
             <br>
             <div class="row justify-content-center p-3 lighter-blue-bg">
@@ -269,16 +273,6 @@
         /* Close Colors right sidebar */
         function closeNav() {
         document.getElementById("myColors").style.width = "0";
-        }
-
-        /* Open Brushes right sidebar */
-        function openNav() {
-        document.getElementById("myBrushes").style.width = "300px";
-        }
-
-        /* Close Brushes right sidebar */
-        function closeNav() {
-        document.getElementById("myBrushes").style.width = "0";
         }
 
 		window.onload = function() {
