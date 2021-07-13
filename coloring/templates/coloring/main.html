@@ -12,6 +12,7 @@
 
 	<script type="text/javascript" src="{% static 'coloring/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'coloring/vendors/paper/paper-full.min.js' %}"></script>
+	
     
 	<style type="text/css">
 		#color-palette {
@@ -300,10 +301,20 @@
 
 			function myCustomInteraction() {
 				var tool = new paper.Tool();
+				
 
 				tool.onMouseDown = function (event) {
 				    var hit = mandala.item.hitTest(event.point, { tolerance: 10, fill: true });
 				    if (hit) {
+				    		// Color pallette keeps track of the full history of colors, though we
+				    		// only color in with the most-recent color.
+				        hit.item.fillColor = cp.history[cp.history.length - 1];
+				    }
+				}
+
+				tool.onMouseDrag = function (event) {
+					var hit = mandala.item.hitTest(event.point, { tolerance: 10, fill: true });
+					if (hit) {
 				    		// Color pallette keeps track of the full history of colors, though we
 				    		// only color in with the most-recent color.
 				        hit.item.fillColor = cp.history[cp.history.length - 1];
@@ -358,6 +369,9 @@
 			// Set up the mandala interactivity.
 			init(true);
 		}
+		
 	</script>
+
+	
 </head>
 </html>
