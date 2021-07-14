@@ -7,6 +7,7 @@
   	<title>P3 Coloring</title>
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/javascript" href="{% static 'coloring/vendors/bootstrap/js/bootstrap.min.js' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'coloring/vendors/bootstrap/css/bootstrap.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'coloring/vendors/css/main.css' %}" />
 
@@ -148,8 +149,6 @@
 	</style>
 
     <body>
-        
-        
         <!-- Page Content -->
         <div id="content">
             <nav class="navbar navbar-expand-lg navbar-dark fixed-top darkest-blue-bg">
@@ -157,14 +156,14 @@
                       <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link" onclick="openMyMenu()">
-								<!-- Google icon src: -->
+								<!-- Google icon src: https://fonts.google.com/ -->
                                 <span class="material-icons white">menu</span>
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link">
-								<!-- Google icon src: -->
+                            <a id="helpIcon" class="nav-link" data-toggle="tooltip" data-container="body" data-placement="bottom" title="Display Tool Descriptions" onclick="setTimeout(showTooltips, 3000)">
+								<!-- Google icon src: https://fonts.google.com/ -->
                                 <span class="material-icons white">help</span>
                                 <span class="sr-only">(current)</span>
                             </a>
@@ -173,32 +172,33 @@
                       <ul class="navbar-nav px-3">
                         <li class="nav-item active text-nowrap">
                             <a class="nav-link">
-								<!-- Google icon src: -->
-                                <span class="material-icons white">undo</span>
+								<!-- Google icon src: https://fonts.google.com/ -->
+                                <span class="material-icons white" data-toggle="tooltip" data-placement="bottom" title="Undo">undo</span>
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item active text-nowrap">
                             <a class="nav-link">
-								<!-- Google icon src: -->
-                                <span class="material-icons white">redo</span>
+								<!-- Google icon src: https://fonts.google.com/ -->
+                                <span class="material-icons white" data-toggle="tooltip" data-placement="bottom" title="Redo">redo</span>
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item active text-nowrap" onclick="selectDefault()">
                             <a class="nav-link">
-								<!-- Google icon src: -->
-                                <span class="material-icons white">format_color_fill</span>
+								<!-- Google icon src: https://fonts.google.com/ -->
+                                <span class="material-icons white" data-toggle="tooltip" data-placement="bottom" title="Paint Bucket">format_color_fill</span>
                                 <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active text-nowrap" onclick="selectEraser()">
-                            <a class="nav-link">
+                            <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Eraser Tool" >
 								<!-- Eraser icon src: https://www.iconsdb.com/white-icons/eraser-icon.html-->
-								<img src="https://www.iconsdb.com/icons/preview/white/eraser-xxl.png" style="width:28px;height:24px;">
-								<span class="sr-only">(current)</span></a>
+								<img src="https://www.iconsdb.com/icons/preview/white/eraser-xxl.png" style="width:28px;height:24px;" >
+								<span class="sr-only">(current)</span>
+							</a>
                         </li>
 						<li class="nav-item active text-nowrap">
-                            <a class="nav-link">
+                            <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Current Color">
 								<div id="colorCircle" class="circle"></div>
 								<span class="sr-only">(current)</span></a>
                         </li>
@@ -212,12 +212,8 @@
             <div class="container-fluid justify-content-between" style="padding-top: 15vh;">
                 <div id="color-palette" style="margin-top: 40vh;"></div>  
             </div>
-            
         </div>
             
-    
-
-
         </div>
         <!-- The menu left sidebar -->
         <div id="myMenu" class="sidenav medium-blue-bg pt-5">
@@ -287,6 +283,13 @@
 		function selectEraser() {
 			cp.history.push("#ffffff");
 			$("#colorCircle").css("background-color", cp.history[cp.history.length - 1]);
+		}
+
+		// show tooltips (src: https://www.w3schools.com/bootstrap/bootstrap_ref_js_tooltip.asp )
+		function showTooltips() {
+			$(document).ready(function(){
+				$("#helpIcon").tooltip('show');
+			});
 		}
 
 		window.onload = function() {
