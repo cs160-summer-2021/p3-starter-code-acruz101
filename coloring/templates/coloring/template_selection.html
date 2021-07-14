@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<head>
+	<title>Template Selection</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'coloring/vendors/bootstrap/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'coloring/vendors/css/main.css' %}" />
+
+	<script src="{% static 'coloring/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
+	<script src="{% static 'coloring/vendors/jquery-ui/jquery-ui.min.js' %}"></script>
+
+	<style>
+		body {
+		background-image: url("/static/coloring/images/Menu.png");
+		background-repeat:no-repeat;
+		background-size: cover;
+	}
+	.btn-block {
+		display: block;
+		width: 100%;
+		height: 100vh;
+	}
+
+	.btn-outline-primary {
+		color: transparent;
+		background-color: transparent;
+		background-image: none;
+		border-color: transparent;
+	}
+
+	.btn-outline-primary:hover {
+		color: transparent;
+		background-color: transparent;
+		border-color: transparent;
+	}
+
+	.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+		color: transparent;
+		background-color: transparent;
+		border-color: transparent;
+	}
+	</style>
+</head>
+
+
+<body>
+	<div class="row">
+		<div class="col-12">
+			<button type="button" class="btn-block btn-outline-primary" onclick="change_page_for()">
+				Block level button</button>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	function change_page_for(){
+		window.location.href = "http://localhost:8000/coloring/new_interaction#";
+	} 
+</script>
+</html>

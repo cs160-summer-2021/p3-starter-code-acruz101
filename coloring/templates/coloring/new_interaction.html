@@ -75,7 +75,7 @@
 			border-radius: 50%;
 		}
 
-       /* The side left navigation menu. Credits to W3Schools */
+       /* The side left navigation menu. Credits to W3Schools (src: http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/howto/howto_js_sidenav.asp.html) */
 		.sidenav {
 		height: 100%; /* 100% Full-height */
 		width: 0; /* 0 width - change this with JavaScript */
@@ -144,6 +144,45 @@
 		@media screen and (max-height: 450px) {
 		.sidenav {padding-top: 15px;}
 		.sidenav a {font-size: 18px;}
+		}
+
+		/* Modal (credit to W3schools) */
+		/* The Modal (background) */
+		.modal {
+		display: none; /* Hidden by default */
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Sit on top */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: auto; /* Enable scroll if needed */
+		background-color: rgb(0,0,0); /* Fallback color */
+		background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+		}
+
+		/* Modal Content/Box */
+		.modal-content {
+		background-color: #fefefe;
+		margin: 15% auto; /* 15% from the top and centered */
+		padding: 20px;
+		border: 1px solid #888;
+		width: 80%; /* Could be more or less, depending on screen size */
+		}
+
+		/* The Close Button */
+		.close {
+		color: #aaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+		color: black;
+		text-decoration: none;
+		cursor: pointer;
 		}
 		
 	</style>
@@ -222,17 +261,29 @@
                 <div class="h1" style="color: white;">Menu</div>    
             </div>
             <div class="row justify-content-center p-3 lighter-blue-bg">
-                <a class="h3" href="#" style="color: white;">Template Selection</a>    
+                <a class="h3" href="template_selection" style="color: white;" >Template Selection</a>    
             </div>
             <br>
             <div class="row justify-content-center p-3 lighter-blue-bg">
-                <a class="h3" href="#" style="color: white;">Save</a>    
+                <a id="showSaved" class="h3" href="#" style="color: white;" >Save</a>    
             </div>
             <br>
             <div class="row justify-content-center p-3 lighter-blue-bg">
                 <a class="h3" href="#" style="color: white;">Export</a>    
             </div>
         </div>
+
+		<!-- The "Save" Modal -->
+		<div id="saveModal" class="modal">
+			<div class="modal-content">
+				<div class="row">
+					<span class="close">&times;</span>
+				</div>
+				<div class="row justify-content-center align-items-center ">
+					<h3>Artwork Saved!</h3>
+				</div>
+			</div>
+		</div>
 
         <!-- The colors right sidebar -->
         <div id="myColors" class="sidenav-right medium-blue-bg">
@@ -245,6 +296,21 @@
     </body>
 
 	<script type="text/javascript" canvas="canvas">
+		/* Saved modal -- W3Schools */
+		var modal = document.getElementById("saveModal");
+		var btn = document.getElementById("showSaved");
+		var span = document.getElementsByClassName("close")[0];
+		btn.onclick = function() {
+		modal.style.display = "block";
+		}
+		span.onclick = function() {
+		modal.style.display = "none";
+		}
+		window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+		}
         
         /* Open Menu left sidebar */
 		function openMyMenu() {
