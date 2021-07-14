@@ -67,6 +67,13 @@
             color: #4175DA;
         }
 
+		.circle {
+			height: 30px;
+			width: 30px;
+			background-color: #000000;
+			border-radius: 50%;
+		}
+
        /* The side left navigation menu. Credits to W3Schools */
 		.sidenav {
 		height: 100%; /* 100% Full-height */
@@ -178,7 +185,7 @@
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item active text-nowrap">
+                        <li class="nav-item active text-nowrap" onclick="selectDefault()">
                             <a class="nav-link">
 								<!-- Google icon src: -->
                                 <span class="material-icons white">format_color_fill</span>
@@ -190,11 +197,9 @@
 								<img src="https://www.iconsdb.com/icons/preview/white/eraser-xxl.png" style="width:28px;height:24px;">
 								<span class="sr-only">(current)</span></a>
                         </li>
-                        
-                        <li class="nav-item active text-nowrap" onclick="openNav()">
+						<li class="nav-item active text-nowrap">
                             <a class="nav-link">
-								<!-- Color palette icon src: https://www.flaticon.com/free-icon/palette_993814 by Freepik-->
-								<img src="https://image.flaticon.com/icons/png/512/993/993814.png" style="width:24px;height:24px;">
+								<div id="colorCircle" class="circle"></div>
 								<span class="sr-only">(current)</span></a>
                         </li>
                       </ul>
@@ -273,9 +278,15 @@
 			options: [],
 			$container: $('#color-palette') 
 		}
+		
+		function selectDefault() {
+			cp.history.push("#000000");
+			$("#colorCircle").css("background-color", cp.history[cp.history.length - 1]);
+		}
 
 		function selectEraser() {
 			cp.history.push("#ffffff");
+			$("#colorCircle").css("background-color", cp.history[cp.history.length - 1]);
 		}
 
 		window.onload = function() {
@@ -287,8 +298,6 @@
 				lastClicked: null,
 				filePath: '/static/coloring/images/mandala-freepik.svg'
 			};
-
-
 
 			function myCustomInteraction() {
 				var tool = new paper.Tool();
@@ -323,6 +332,7 @@
 					$swatch.click(function(){
 						// add color to the color palette history
 					  	cp.history.push($(this).css("background-color"));
+						$("#colorCircle").css("background-color", cp.history[cp.history.length - 1]);
 					});
 					cp.$container.append($swatch);
 				}
