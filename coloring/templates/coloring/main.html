@@ -184,7 +184,7 @@
                                 <span class="material-icons white">format_color_fill</span>
                                 <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item active text-nowrap">
+                        <li class="nav-item active text-nowrap" onclick="selectEraser()">
                             <a class="nav-link">
 								<!-- Eraser icon src: https://www.iconsdb.com/white-icons/eraser-icon.html-->
 								<img src="https://www.iconsdb.com/icons/preview/white/eraser-xxl.png" style="width:28px;height:24px;">
@@ -240,14 +240,6 @@
             
 
         </div>
-
-        <!-- The brushes right sidebar -->
-        <div id="myBrushes" class="sidenav-right medium-blue-bg">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <!-- add color picker -->
-            
-
-        </div>
         
     </body>
 
@@ -275,6 +267,17 @@
         document.getElementById("myColors").style.width = "0";
         }
 
+		// color palette (moved out of onload)
+		var cp = {
+			history: ["#000000"], // black selected by default
+			options: [],
+			$container: $('#color-palette') 
+		}
+
+		function selectEraser() {
+			cp.history.push("#ffffff");
+		}
+
 		window.onload = function() {
 			var canvas = document.getElementById('myCanvas');
 
@@ -285,13 +288,7 @@
 				filePath: '/static/coloring/images/mandala-freepik.svg'
 			};
 
-			// color palette
-			var cp = {
-				history: ["#000000"], // black selected by default
-				options: [],
-				$container: $('#color-palette')
-                
-			}
+
 
 			function myCustomInteraction() {
 				var tool = new paper.Tool();
@@ -363,6 +360,8 @@
 			// Set up the mandala interactivity.
 			init(true);
 		}
+
+
 		
 	</script>
 
